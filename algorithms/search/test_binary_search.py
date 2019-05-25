@@ -12,23 +12,25 @@ from hamcrest.core.core import is_
 from algorithms.search import _test_search_with_big_data
 
 
-def binary_search(list: List, element) -> int:
+def binary_search(list: List, element, start: int = 0, end: int = None) -> int:
     """
     Using binary search to find element in sorted list and return its position
     :param list: sorted list
     :param element: the item to be find
     :return: position of element in list, raise ValueError if not found
     """
-    if not list:
+    if end is None:
+        end = len(list) - 1
+    if not list or end < start:
         raise ValueError('%s not found' % str(element))
-    mid_pos = len(list) // 2
+    mid_pos = (start + end) // 2
     mid_val = list[mid_pos]
     if mid_val == element:
         return mid_pos
     elif element < mid_val:
-        return binary_search(list[0:mid_pos], element)
+        return binary_search(list, element, 0, mid_pos - 1)
     else:
-        return binary_search(list[mid_pos + 1:], element) + mid_pos + 1
+        return binary_search(list, element, mid_pos + 1, end)
 
 
 class TestBinarySearch(TestCase):
@@ -46,6 +48,8 @@ class TestBinarySearch(TestCase):
             assert_that(binary_search([1, 2, 3, 4, 5], i + 1), is_(i))
 
     def test_not_found(self):
+        with self.assertRaises(ValueError):
+            binary_search([2], 1)
         for i in (1, 3):
             with self.assertRaises(ValueError):
                 binary_search([2], i)
