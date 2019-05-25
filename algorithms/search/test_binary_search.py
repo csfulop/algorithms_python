@@ -3,12 +3,13 @@ Given a sorted array arr[] of n elements, write a function to search a given ele
 
 https://www.geeksforgeeks.org/binary-search/
 """
-from random import randint
 from typing import List
 from unittest import TestCase
 
 from hamcrest.core import assert_that
 from hamcrest.core.core import is_
+
+from algorithms.search import test_search_with_big_data
 
 
 def binary_search(list: List, element) -> int:
@@ -19,7 +20,7 @@ def binary_search(list: List, element) -> int:
     :return: position of element in list, raise ValueError if not found
     """
     if not list:
-        raise ValueError('%s not found' % element)
+        raise ValueError('%s not found' % str(element))
     mid_pos = len(list) // 2
     mid_val = list[mid_pos]
     if mid_val == element:
@@ -56,15 +57,4 @@ class TestBinarySearch(TestCase):
                 binary_search([2, 4, 6], i)
 
     def test_big_data(self):
-        N = 100000
-        list = [randint(2, 3)]
-        for i in range(N):
-            list.append(list[-1] + randint(2, 3))
-        for i in range(10):
-            pos = randint(0, len(list) - 1)
-            result = binary_search(list, list[pos])
-            assert_that(result, is_(pos))
-        for i in range(10):
-            pos = randint(0, len(list) - 1)
-            with self.assertRaises(ValueError):
-                binary_search(list, list[pos] + 1)
+        test_search_with_big_data(binary_search)
