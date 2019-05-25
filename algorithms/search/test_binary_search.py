@@ -9,7 +9,7 @@ from unittest import TestCase
 from hamcrest.core import assert_that
 from hamcrest.core.core import is_
 
-from algorithms.search import test_search_with_big_data
+from algorithms.search import _test_search_with_big_data
 
 
 def binary_search(list: List, element) -> int:
@@ -57,4 +57,4 @@ class TestBinarySearch(TestCase):
                 binary_search([2, 4, 6], i)
 
     def test_big_data(self):
-        test_search_with_big_data(binary_search)
+        _test_search_with_big_data(binary_search)
