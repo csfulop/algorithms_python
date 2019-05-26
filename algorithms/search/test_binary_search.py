@@ -28,7 +28,7 @@ def binary_search(list: List, element, start: int = 0, end: int = None) -> int:
     if mid_val == element:
         return mid_pos
     elif element < mid_val:
-        return binary_search(list, element, 0, mid_pos - 1)
+        return binary_search(list, element, start, mid_pos - 1)
     else:
         return binary_search(list, element, mid_pos + 1, end)
 
