@@ -14,7 +14,7 @@ from algorithms.search import _test_search_with_big_data
 
 def binary_search(list: List, element, start: int = 0, end: int = None) -> int:
     """
-    Using binary search to find element in sorted list and return its position
+    Use binary search to find the given element in sorted list and return its position
     :param list: sorted list
     :param element: the item to be find
     :return: position of element in list, raise ValueError if not found
