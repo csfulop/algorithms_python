@@ -5,11 +5,11 @@ https://www.geeksforgeeks.org/bubble-sort/
 """
 from timeit import timeit
 from typing import List
-from unittest import TestCase
 
 from hamcrest import less_than
 from hamcrest.core import assert_that
-from hamcrest.core.core import is_
+
+from algorithms.sort import Base
 
 
 def bubble_sort(list: List) -> List:
@@ -29,15 +29,10 @@ def bubble_sort(list: List) -> List:
     return list
 
 
-class TestBubbleSort(TestCase):
-    def test_sort_empty_list(self):
-        assert_that(bubble_sort([]), is_([]))
-
-    def test_bubble_sort(self):
-        assert_that(bubble_sort([1, 2]), is_([1, 2]))
-        assert_that(bubble_sort([2, 1]), is_([1, 2]))
-        assert_that(bubble_sort([5, 4, 3, 2, 1]), is_([1, 2, 3, 4, 5]))
-        assert_that(bubble_sort([1, 2, 5, 4, 3]), is_([1, 2, 3, 4, 5]))
+class TestBubbleSort(Base.SortBase):
+    def setUp(self) -> None:
+        super().setUp()
+        self.sort = bubble_sort
 
     def test_optimized_bubble_sort(self):
         sorted_list = list(range(1000))

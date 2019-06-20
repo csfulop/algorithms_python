@@ -9,7 +9,8 @@ from unittest import TestCase
 
 from hamcrest import greater_than
 from hamcrest.core import assert_that
-from hamcrest.core.core import is_
+
+from algorithms.sort import Base
 
 
 def insertion_sort(list: List) -> List:
@@ -36,31 +37,13 @@ def insertion_sort2(list: List) -> List:
     return list
 
 
-class Base:
-    class InsertionSortBase(TestCase):
-        def setUp(self) -> None:
-            self.sort = None
-
-        def test_sort_empty_list(self):
-            assert_that(self.sort([]), is_([]))
-
-        def test_insertion_sort(self):
-            assert_that(self.sort([1]), is_([1]))
-            assert_that(self.sort([1, 2]), is_([1, 2]))
-            assert_that(self.sort([2, 1]), is_([1, 2]))
-            assert_that(self.sort([1, 2, 3, 4, 5]), is_([1, 2, 3, 4, 5]))
-            assert_that(self.sort([5, 4, 3, 2, 1]), is_([1, 2, 3, 4, 5]))
-            assert_that(self.sort([1, 2, 5, 4, 3]), is_([1, 2, 3, 4, 5]))
-            assert_that(self.sort(list(reversed(range(1000)))), is_(list(range(1000))))
-
-
-class TestInsertionSort(Base.InsertionSortBase):
+class TestInsertionSort(Base.SortBase):
     def setUp(self) -> None:
         super().setUp()
         self.sort = insertion_sort
 
 
-class TestInsertionSort2(Base.InsertionSortBase):
+class TestInsertionSort2(Base.SortBase):
     def setUp(self) -> None:
         super().setUp()
         self.sort = insertion_sort2
