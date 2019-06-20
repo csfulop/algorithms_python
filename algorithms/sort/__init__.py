@@ -18,4 +18,11 @@ class SortBase(TestCase):
         assert_that(self.sort([1, 2, 3, 4, 5]), is_([1, 2, 3, 4, 5]))
         assert_that(self.sort([5, 4, 3, 2, 1]), is_([1, 2, 3, 4, 5]))
         assert_that(self.sort([1, 2, 5, 4, 3]), is_([1, 2, 3, 4, 5]))
-        assert_that(self.sort(list(reversed(range(1000)))), is_(list(range(1000))))
+        assert_that(self.sort(list(reversed(range(100)))), is_(list(range(100))))
+        assert_that(self.sort(list(reversed(range(101)))), is_(list(range(101))))
+
+    def test_sort_list_with_same_items(self):
+        assert_that(self.sort([1, 2, 1]), is_([1, 1, 2]))
+        assert_that(
+            self.sort(list(reversed(range(100))) + list(range(100))),
+            is_([x for y in range(100) for x in (y, y)]))
