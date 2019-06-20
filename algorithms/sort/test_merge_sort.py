@@ -6,7 +6,7 @@ https://www.geeksforgeeks.org/merge-sort/
 """
 from typing import List
 
-from algorithms.sort import Base
+from  algorithms import sort
 
 
 def merge_sort(list: List) -> List:
@@ -31,7 +31,7 @@ def merge_sort(list: List) -> List:
     return result
 
 
-class TestMergeSort(Base.SortBase):
+class TestMergeSort(sort.SortBase):
     def setUp(self) -> None:
         super().setUp()
         self.sort = merge_sort

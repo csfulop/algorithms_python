@@ -10,7 +10,7 @@ from unittest import TestCase
 from hamcrest import greater_than
 from hamcrest.core import assert_that
 
-from algorithms.sort import Base
+from algorithms import sort
 
 
 def insertion_sort(list: List) -> List:
@@ -37,13 +37,13 @@ def insertion_sort2(list: List) -> List:
     return list
 
 
-class TestInsertionSort(Base.SortBase):
+class TestInsertionSort(sort.SortBase):
     def setUp(self) -> None:
         super().setUp()
         self.sort = insertion_sort
 
 
-class TestInsertionSort2(Base.SortBase):
+class TestInsertionSort2(sort.SortBase):
     def setUp(self) -> None:
         super().setUp()
         self.sort = insertion_sort2

@@ -9,7 +9,7 @@ from typing import List
 from hamcrest import less_than
 from hamcrest.core import assert_that
 
-from algorithms.sort import Base
+from algorithms import sort
 
 
 def bubble_sort(list: List) -> List:
@@ -29,7 +29,7 @@ def bubble_sort(list: List) -> List:
     return list
 
 
-class TestBubbleSort(Base.SortBase):
+class TestBubbleSort(sort.SortBase):
     def setUp(self) -> None:
         super().setUp()
         self.sort = bubble_sort
