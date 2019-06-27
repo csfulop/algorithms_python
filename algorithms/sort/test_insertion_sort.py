@@ -37,13 +37,13 @@ def insertion_sort2(list: List) -> List:
     return list
 
 
-class TestInsertionSort(sort.SortBase):
+class TestInsertionSort(sort.SortTestBase):
     def setUp(self) -> None:
         super().setUp()
         self.sort = insertion_sort
 
 
-class TestInsertionSort2(sort.SortBase):
+class TestInsertionSort2(sort.SortTestBase):
     def setUp(self) -> None:
         super().setUp()
         self.sort = insertion_sort2

@@ -4,7 +4,7 @@ from hamcrest.core import assert_that
 from hamcrest.core.core import is_
 
 
-class SortBase(TestCase):
+class SortTestBase(TestCase):
     def setUp(self) -> None:
         self.sort = None
 

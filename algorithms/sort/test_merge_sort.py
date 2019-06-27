@@ -66,13 +66,13 @@ def merge_sort2(list: List) -> List:
     return list
 
 
-class TestMergeSort(sort.SortBase):
+class TestMergeSort(sort.SortTestBase):
     def setUp(self) -> None:
         super().setUp()
         self.sort = merge_sort
 
 
-class TestMergeSort2(sort.SortBase):
+class TestMergeSort2(sort.SortTestBase):
     def setUp(self) -> None:
         super().setUp()
         self.sort = merge_sort2

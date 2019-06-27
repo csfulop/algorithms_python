@@ -33,7 +33,7 @@ def quick_sort(list: List, low=0, high=None) -> List:
     return list
 
 
-class TestQuickSort(sort.SortBase):
+class TestQuickSort(sort.SortTestBase):
     def setUp(self) -> None:
         super().setUp()
         self.sort = quick_sort

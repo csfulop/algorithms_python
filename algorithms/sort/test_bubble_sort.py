@@ -29,7 +29,7 @@ def bubble_sort(list: List) -> List:
     return list
 
 
-class TestBubbleSort(sort.SortBase):
+class TestBubbleSort(sort.SortTestBase):
     def setUp(self) -> None:
         super().setUp()
         self.sort = bubble_sort
