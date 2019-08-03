@@ -39,10 +39,6 @@ class Heap:
         return False
 
 
-class HeapElement:
-    pass
-
-
 class TestHeap(TestCase):
     def test_size_of_empty_heap(self):
         heap = Heap()
