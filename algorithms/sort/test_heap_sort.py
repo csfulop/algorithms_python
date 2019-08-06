@@ -1,7 +1,7 @@
 from typing import List
 
 from algorithms import sort
-from algorithms.data_structure.heap import Heap
+from algorithms.data_structure.test_heap import Heap
 
 
 def heap_sort(input: List) -> List:
