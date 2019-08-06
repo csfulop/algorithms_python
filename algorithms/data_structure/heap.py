@@ -8,6 +8,8 @@ from hamcrest.core import assert_that
 class Heap:
     def __init__(self):
         self._data = []
+        # FIXME: build heap from given list
+        # FIXME: use comparator to be able to create min/max heap
 
     def size(self) -> int:
         return len(self._data)

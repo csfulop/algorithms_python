@@ -14,7 +14,9 @@ from algorithms import sort
 
 def bubble_sort(list: List) -> List:
     """
-    Bubble sort the given list
+    Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements
+    if they are in wrong order.
+    https://www.geeksforgeeks.org/bubble-sort/
     :param list: list to be sorted
     :return: the sorted list
     """
