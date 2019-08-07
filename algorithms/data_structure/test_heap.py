@@ -6,11 +6,11 @@ from hamcrest.core import assert_that
 
 
 class Heap:
-    def __init__(self, items=None):
+    def __init__(self, items=None, comparator=int.__gt__):
         self._data = [] if items is None else deepcopy(items)
+        self._comparator = comparator
         for i in range(len(self._data) // 2 - 1, -1, -1):
             self._heapify_down(i)
-        # FIXME: use comparator to be able to create min/max heap
 
     def size(self) -> int:
         return len(self._data)
@@ -37,7 +37,7 @@ class Heap:
             index = len(self._data) - 1
         if index > 0:
             parent = (index - 1) // 2
-            if index < len(self) and self[index] > self[parent]:
+            if index < len(self) and self._comparator(self[index], self[parent]):
                 self._data[parent], self._data[index] = self[index], self[parent]
                 self._heapify_up(parent)
 
@@ -45,9 +45,9 @@ class Heap:
         left = index * 2 + 1
         right = index * 2 + 2
         largest = index
-        if left < len(self) and self[left] > self[index]:
+        if left < len(self) and self._comparator(self[left], self[index]):
             largest = left
-        if right < len(self) and self[right] > self[largest]:
+        if right < len(self) and self._comparator(self[right], self[largest]):
             largest = right
         if largest != index:
             self._data[largest], self._data[index] = self[index], self[largest]

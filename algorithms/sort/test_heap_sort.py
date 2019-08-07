@@ -11,11 +11,11 @@ def heap_sort(input: List) -> List:
     :param input: list to be sorted
     :return: the sorted list
     """
-    heap = Heap(input)
+    heap = Heap(items=input, comparator=int.__lt__)
     result = list()
     while len(heap) > 0:
         result.append(heap.pop())
-    return list(reversed(result))  # FIXME: use min heap and remove reversed
+    return result
 
 
 class TestHeapSort(sort.SortTestBase):
