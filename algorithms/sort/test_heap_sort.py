@@ -11,9 +11,7 @@ def heap_sort(input: List) -> List:
     :param input: list to be sorted
     :return: the sorted list
     """
-    heap = Heap()
-    for item in input:
-        heap.add(item)
+    heap = Heap(input)
     result = list()
     while len(heap) > 0:
         result.append(heap.pop())

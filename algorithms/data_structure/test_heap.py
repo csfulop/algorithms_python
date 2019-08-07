@@ -6,9 +6,10 @@ from hamcrest.core import assert_that
 
 
 class Heap:
-    def __init__(self):
-        self._data = []
-        # FIXME: build heap from given list
+    def __init__(self, items=None):
+        self._data = [] if items is None else deepcopy(items)
+        for i in range(len(self._data) // 2 - 1, -1, -1):
+            self._heapify_down(i)
         # FIXME: use comparator to be able to create min/max heap
 
     def size(self) -> int:
@@ -96,3 +97,7 @@ class TestHeap(TestCase):
         max_item = heap.pop()
         assert_that(heap._data, is_(expedted_after_pop))
         assert_that(max_item, is_(heap_data[0]))
+
+    def test_build_heap_from_list(self):
+        heap = Heap([1, 2, 3, 4, 5])
+        assert_that(heap._data, is_([5, 4, 3, 1, 2]))
